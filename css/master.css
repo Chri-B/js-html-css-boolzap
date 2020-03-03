@@ -34,6 +34,8 @@ img {
 i {
     font-size: 22px;
     color: #9e9e9a;
+    padding-left: 20px;
+    cursor: pointer;
 }
 
 h4 {
@@ -91,12 +93,8 @@ p {
     padding: 0 20px 0 10px;
 }
 
-.header-list i {
-    padding-left: 20px;
-    cursor: pointer;
-}
-
-.header-list .img-round img {
+.header-list .img-round img,
+.chat-room .img-round img {
     padding: 10px 5px;
 }
 
@@ -119,10 +117,25 @@ p {
 .notification-box .img-round {
     margin: 0 10px 0 15px;
 }
+
+.notification-box p {
+    color: rgb(96, 96, 96);
+    text-decoration: underline;
+}
 /* stile search-chat */
 .search-chat {
     height: 50px;
     background-color: #f7f7f7;
+    padding: 5px;
+}
+
+.search-chat input {
+    font-family: 'FontAwesome';
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 4px;
+
 }
 
 /* stile chat-list */
@@ -153,28 +166,78 @@ p {
     justify-content: space-between;
 }
 
-
-.chat-left {
-
-}
-
 /* box destro */
 .chat-room {
     width: 60%;
     height: 100%;
     float: left;
 }
+/* stile header */
 
-.main-room {
-    background-image: url('https://i2.wp.com/www.techgrapple.com/wp-content/uploads/2016/07/WhatsApp-Chat-theme-iPhone-stock-744.jpg?fit=744%2C1392&ssl=1');
-    background-size: contain;
-    height: calc(100% - 70px - 70px);
-    overflow-y: auto;
+.header-room {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px 0 10px;
+}
+
+.header-room .chat-text {
+    height: 70px;
+}
+
+.header-room .left {
+    height: 100%;
 }
 
 
+.header-room p {
+    color: rgb(96, 96, 96);
+}
 
 
+.main-room {
+    overflow-y: auto;
+    background-image: url('https://i2.wp.com/www.techgrapple.com/wp-content/uploads/2016/07/WhatsApp-Chat-theme-iPhone-stock-744.jpg?fit=744%2C1392&ssl=1');
+    background-size: contain;
+    height: calc(100% - 70px - 70px);
+    padding: 20px 40px;
+}
+
+/* stile footer-room */
+.footer-room {
+    display: flex;
+    align-items: center;
+}
+
+
+.input-msg {
+    width: 80%;
+    height: 100%;
+}
+
+.footer-room i {
+    padding: 0;
+}
+
+.input-msg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0;
+}
+
+.input-msg input {
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    height: 100%;
+}
+
+.emoticon,
+.input-audio {
+    width: 10%;
+    text-align: center;
+}
 
 
 
