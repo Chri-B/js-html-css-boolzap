@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 auto;
+    height: 100vh;
+    position: relative;
+}
+
+.back-green {
+    height: 20%;
+    background-color: #00bfa5;
+}
+
+.back-gray {
+    height: 80%;
+    background-color: #d6dbd7;
+}
+
+.bgc-wa-gray {
+    background-color: #ededed;
+}
+
+/* stile box chat centrale */
+.container-chat {
+    width: 80vw;
+    height: 90vh;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* stile header-footer */
+.header-room,
+.footer-room,
+.header-list {
+    height: 70px;
+    width: 100%;
+}
+
+.header-room {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* box sinistro */
+.chat-list-box {
+    background-color: #ffffff;
+    width: 40%;
+    height: 100%;
+    float: left;
+    border-right: 1px solid #e0e0e0;
+}
+
+.notification-box {
+    height: 100px;
+    background-color: #9de1fe;
+}
+
+.search-chat {
+    height: 50px;
+    width: 100%;
+    background-color: #f7f7f7;
+}
+
+.chat-list {
+    width: 100%;
+    height: calc(100% - 50px - 100px - 70px);
+    background-color: red;
+    overflow-y: auto;
+}
+
+/* box destro */
+.chat-room {
+    width: 60%;
+    height: 100%;
+    float: left;
+}
+
+.main-room {
+    background-image: url('https://i.pinimg.com/736x/79/5c/ab/795cabc4647f73b365e2e6eabd0f34dc.jpg');
+    background-size: contain;
+    width: 100%;
+    height: calc(100% - 70px - 70px);
+    overflow-y: auto;
+}
+
+
+
+
+
+
+
+
+
+
+/*  */
