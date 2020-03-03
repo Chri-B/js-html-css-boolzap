@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -12,7 +13,7 @@
 
 .back-green {
     height: 20%;
-    background-color: #00bfa5;
+    background-color: #009688;
 }
 
 .back-gray {
@@ -22,6 +23,11 @@
 
 .bgc-wa-gray {
     background-color: #ededed;
+}
+
+img {
+    border-radius: 50%;
+    height: 100%;
 }
 
 /* stile box chat centrale */
@@ -40,7 +46,6 @@
 .footer-room,
 .header-list {
     height: 70px;
-    width: 100%;
 }
 
 .header-room {
@@ -63,15 +68,49 @@
 
 .search-chat {
     height: 50px;
-    width: 100%;
     background-color: #f7f7f7;
 }
 
 .chat-list {
-    width: 100%;
     height: calc(100% - 50px - 100px - 70px);
-    background-color: red;
     overflow-y: auto;
+}
+/* stile chat-preview */
+.chat-preview {
+    height: 80px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.img-round {
+    height: 100%;
+    padding: 10px 15px;
+    float: left;
+}
+
+.chat-text {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 5px;
+}
+
+.profile-name-time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.name h4 {
+    padding-bottom: 5px;
+}
+
+p {
+    font-size: 14px;
+    color: #b9b9b9;
+}
+
+.chat-left {
+
 }
 
 /* box destro */
@@ -82,9 +121,8 @@
 }
 
 .main-room {
-    background-image: url('https://i.pinimg.com/736x/79/5c/ab/795cabc4647f73b365e2e6eabd0f34dc.jpg');
+    background-image: url('https://i2.wp.com/www.techgrapple.com/wp-content/uploads/2016/07/WhatsApp-Chat-theme-iPhone-stock-744.jpg?fit=744%2C1392&ssl=1');
     background-size: contain;
-    width: 100%;
     height: calc(100% - 70px - 70px);
     overflow-y: auto;
 }
