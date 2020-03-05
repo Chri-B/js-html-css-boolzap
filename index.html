@@ -4,16 +4,16 @@
         <meta charset="utf-8">
         <title>js-html-css-boolzap</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="https://kit.fontawesome.com/b125f3be7d.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"/>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="css/master.css">
     </head>
     <body>
         <div class="container">
             <div class="back-green"></div>
             <div class="back-gray"></div>
-            <div class="container-chat">
+            <div class="container-chat clearfix">
                 <div class="chat-list-box bgc-wa-gray">
                     <div class="header-list bgc-wa-gray">
                         <div class="img-round">
@@ -25,7 +25,7 @@
                             <i class="fas fa-ellipsis-v"></i>
                         </div>
                     </div>
-                    <div class="notification-box">
+                    <div class="notification-box clearfix">
                         <div class="img-round">
                             <i class="fas fa-bell-slash"></i>
                         </div>
@@ -35,10 +35,13 @@
                         </div>
                     </div>
                     <div class="search-chat">
-                        <input type="text" placeholder="    &#xF002;   Scrivi un messaggio">
+                        <div class="search-input-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Scrivi un messaggio">
+                        </div>
                     </div>
                     <div class="chat-list">
-                        <div class="chat-preview">
+                        <div class="chat-preview clearfix">
                             <div class="img-round">
                                 <img src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairBigHair&accessoriesType=Wayfarers&hairColor=SilverGray&facialHairType=BeardMagestic&facialHairColor=BrownDark&clotheType=BlazerSweater&clotheColor=Pink&eyeType=Cry&eyebrowType=UnibrowNatural&mouthType=Concerned&skinColor=DarkBrown" alt="profile-picture">
                             </div>
@@ -58,7 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="chat-preview">
+                        <div class="chat-preview clearfix">
                             <div class="img-round">
                                 <img src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairFro&accessoriesType=Prescription01&hairColor=Red&facialHairType=MoustacheFancy&facialHairColor=Auburn&clotheType=BlazerSweater&clotheColor=PastelRed&eyeType=Dizzy&eyebrowType=Default&mouthType=Disbelief&skinColor=DarkBrown" alt="profile-picture">
                             </div>
@@ -78,7 +81,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="chat-preview">
+                        <div class="chat-preview clearfix">
                             <div class="img-round">
                                 <img src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairBigHair&accessoriesType=Prescription02&hairColor=BlondeGolden&facialHairType=Blank&facialHairColor=Red&clotheType=ShirtVNeck&clotheColor=White&graphicType=Selena&eyeType=WinkWacky&eyebrowType=SadConcernedNatural&mouthType=Grimace&skinColor=Yellow" alt="profile-picture">
                             </div>
@@ -98,7 +101,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="chat-preview">
+                        <div class="chat-preview clearfix">
                             <div class="img-round">
                                 <img src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairDreads01&accessoriesType=Kurt&hairColor=Brown&facialHairType=BeardLight&facialHairColor=Brown&clotheType=GraphicShirt&clotheColor=Gray01&graphicType=Skull&eyeType=EyeRoll&eyebrowType=RaisedExcitedNatural&mouthType=Grimace&skinColor=Pale" alt="profile-picture">
                             </div>
@@ -118,7 +121,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="chat-preview">
+                        <div class="chat-preview clearfix">
                             <div class="img-round">
                                 <img src="https://avataaars.io/?avatarStyle=Circle&topType=Eyepatch&accessoriesType=Wayfarers&hairColor=Platinum&facialHairType=MoustacheFancy&facialHairColor=Red&clotheType=ShirtScoopNeck&clotheColor=PastelYellow&eyeType=WinkWacky&eyebrowType=SadConcernedNatural&mouthType=Smile&skinColor=Brown" alt="profile-picture">
                             </div>
@@ -138,7 +141,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="chat-preview">
+                        <div class="chat-preview clearfix">
                             <div class="img-round">
                                 <img src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortRound&accessoriesType=Prescription01&hairColor=Brown&facialHairType=BeardLight&facialHairColor=Platinum&clotheType=Overall&clotheColor=Pink&eyeType=Side&eyebrowType=UpDown&mouthType=Tongue&skinColor=Black" alt="profile-picture">
                             </div>
@@ -158,7 +161,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="chat-preview">
+                        <div class="chat-preview clearfix">
                             <div class="img-round">
                                 <img src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairFro&accessoriesType=Wayfarers&hairColor=Auburn&facialHairType=Blank&facialHairColor=Black&clotheType=ShirtVNeck&clotheColor=White&eyeType=Default&eyebrowType=UpDown&mouthType=Tongue&skinColor=Light" alt="profile-picture">
                             </div>
@@ -178,7 +181,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="chat-preview">
+                        <div class="chat-preview clearfix">
                             <div class="img-round">
                                 <img src="https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortRound&accessoriesType=Kurt&hatColor=Gray02&hairColor=Red&facialHairType=MoustacheFancy&facialHairColor=BlondeGolden&clotheType=ShirtCrewNeck&clotheColor=PastelRed&eyeType=Cry&eyebrowType=RaisedExcited&mouthType=Vomit&skinColor=Yellow" alt="profile-picture">
                             </div>
@@ -198,7 +201,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="chat-preview">
+                        <div class="chat-preview clearfix">
                             <div class="img-round">
                                 <img src="https://avataaars.io/?avatarStyle=Circle&topType=Turban&accessoriesType=Round&hatColor=Blue03&facialHairType=BeardMedium&facialHairColor=Red&clotheType=Overall&clotheColor=Gray01&eyeType=Happy&eyebrowType=RaisedExcited&mouthType=Grimace&skinColor=Light" alt="profile-picture">
                             </div>
@@ -280,15 +283,26 @@
                             <i class="far fa-smile"></i>
                         </div>
                         <div class="input-msg">
-                            <input type="text" name="" value="" placeholder="    Scrivi un messaggio">
+                                <input id="messaggio-input" type="text" placeholder="Scrivi un messaggio">
                         </div>
-                        <div class="input-audio">
+                        <div class="tasto-invio">
                             <i class="fas fa-microphone"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="template">
+            <div class="chat-message">
+                <p class="testo-messaggio">tu?</p>
+                <div class="message-time">
+                    <span>1.23</span>
+                </div>
+            </div>
+        </div>
+
+
 
 
         <script src="js/main.js" charset="utf-8"></script>

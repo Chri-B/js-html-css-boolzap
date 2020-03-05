@@ -6,6 +6,12 @@
     font-family: 'Roboto', sans-serif;
 }
 
+.clearfix::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
 .container {
     margin: 0 auto;
     height: 100vh;
@@ -36,6 +42,10 @@ i {
     color: #9e9e9a;
     padding-left: 20px;
     cursor: pointer;
+}
+
+i:hover {
+    color: black;
 }
 
 h4 {
@@ -127,14 +137,30 @@ p {
     height: 50px;
     background-color: #f7f7f7;
     padding: 5px;
+    position: relative;
+}
+
+.search-input-box {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.search-chat i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(-50%, -50%);
 }
 
 .search-chat input {
-    font-family: 'FontAwesome';
-    width: 100%;
-    height: 100%;
     border: none;
-    border-radius: 4px;
+    font-size: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
 
 }
 
@@ -218,9 +244,6 @@ p {
     position: absolute;
     bottom: 0;
     right: 5px;
-}
-
-.message-time span {
     color: #b9b9b9;
     font-size: 10px;
 }
@@ -247,7 +270,10 @@ p {
 
 .input-msg {
     width: 80%;
-    height: 100%;
+    height: 80%;
+    background-color: white;
+    border-radius: 4px;
+    margin: 10px;
 }
 
 .footer-room i {
@@ -262,21 +288,23 @@ p {
 }
 
 .input-msg input {
-    width: 100%;
+    width: 90%;
     border: none;
-    border-radius: 4px;
     height: 100%;
+    font-size: 15px;
 }
 
 .emoticon,
-.input-audio {
+.tasto-invio {
     width: 10%;
     text-align: center;
 }
 
+/* stile template */
 
-
-
+.template {
+    display: none;
+}
 
 
 /*  */
