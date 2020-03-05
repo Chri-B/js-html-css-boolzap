@@ -1,9 +1,11 @@
-// console.log(time);
-
+$('#messaggio-input').click(function() {
+    $('.tasto-invio').find('i').toggleClass('fa-microphone fa-paper-plane');
+});
 
 $('.tasto-invio').click(function() {
     messageSent(); // milestone 1.2
     setTimeout(messageOk, 1000); // milestone 2.1
+    $('.tasto-invio').find('i').toggleClass('fa-microphone fa-paper-plane');
 });
 
 $('#find-contact').keyup(function(event) {
@@ -23,6 +25,7 @@ $(document).keydown(function(event) {
         case 13:
             messageSent();
             setTimeout(messageOk, 1000);
+            $('.tasto-invio').find('i').toggleClass('fa-microphone fa-paper-plane');
             break;
     }
 });
@@ -30,6 +33,7 @@ $(document).keydown(function(event) {
 // funzione messaggio inviato dopo input utente
 function messageSent() {
     var messaggioInput = $('#messaggio-input').val();
+    console.log(messaggioInput);
     $('#messaggio-input').val('');
     var messaggio = $('.template .chat-message').clone().addClass('sent');
     messaggio.find('.testo-messaggio').text(messaggioInput);
