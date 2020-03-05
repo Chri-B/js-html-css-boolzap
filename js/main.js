@@ -11,9 +11,9 @@ $('#find-contact').keyup(function(event) {
 
     $('.chat-preview h4').each(function() { // confronto il valore inserito dall'utente con OGNUNO degli elementi h4 (dove ci sono i nomi dei contatti)
         if ($(this).text().toLowerCase().includes(carattereFiltro)) { // se il valore digitato dall'utente compare in uno dei miei contatti, allora lo mostro
-            $(this).show();
+            $(this).parents('.chat-preview').show();
         } else { // altrimenti lo scarto e quindi non lo visualizzo
-            $(this).hide();
+            $(this).parents('.chat-preview').hide();
         }
     });
 });
@@ -50,8 +50,4 @@ function getTime() {
     var dt = new Date();
     var time = dt.getHours() + ":" + dt.getMinutes();
     return time;
-};
-
-// funzione filtro contatti
-function filtroContatti() {
 };
