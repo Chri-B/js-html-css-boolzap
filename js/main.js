@@ -2,8 +2,8 @@
 
 
 $('.tasto-invio').click(function() {
-    messageSent();
-    setTimeout(messageOk, 1000);
+    messageSent(); // milestone 1.2
+    setTimeout(messageOk, 1000); // milestone 2.1
 });
 
 $(document).keydown(function(event) {
@@ -30,7 +30,7 @@ function messageOk() {
     messaggio.find('.testo-messaggio').text('ok');
     messaggio.children('.message-time').html(getTime());
     $('.main-room').append(messaggio);
-}
+};
 
 
 function getTime() {
