@@ -17,9 +17,9 @@ $('.tasto-invio').click(function() {
     scroll();
     setTimeout(function() {
         appendMsg('ok','received');
-        scroll();
     }, 1000); // milestone 2.1
 });
+
 // invio messaggio inserito da utente con pressione invio
 $('.input-msg').keydown(function(event) {
     switch (event.which) {
@@ -65,11 +65,22 @@ function appendMsg(testoInput, sentReceived) {
 // funzione per avere orario
 function getTime() {
     var dt = new Date();
-    var time = dt.getHours() + ":" + dt.getMinutes();
+    if (dt.getMinutes() < 10) {
+        time = dt.getHours() + ":" + 0 + dt.getMinutes();
+    } else {
+        var time = dt.getHours() + ":" + dt.getMinutes();
+    }
     return time;
 };
 
-function scroll() {
-    var pixelToScroll = $('.main-room').height();
-    $('.main-room').scrollTop(pixelToScroll);
+// funzione per scroll-down automatico
+// function scroll() { // dopo una certa qnt. di interazioni non scende più!
+//     var pixelScroll = $('.main-room').height();
+//     $('.main-room').scrollTop(pixelScroll);
+// };
+
+// funzione per scroll down automatico infinito
+function scroll() { // Funzione di autoscorrimento in basso
+    var scrollBot = document.getElementById('scrolled');
+    scrollBot.scrollTop = scrollBot.scrollHeight;
 }
