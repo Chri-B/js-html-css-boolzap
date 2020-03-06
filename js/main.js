@@ -1,13 +1,44 @@
-$('#messaggio-input').click(function() {
-    $('.tasto-invio').find('i').toggleClass('fa-microphone fa-paper-plane');
+// cambio icona in base a click/focus
+$('#messaggio-input').focus(function() {
+    $('.input-msg').addClass('box-shadow');
+    $('.tasto-invio').find('i').removeClass('fa-microphone');
+    $('.tasto-invio').find('i').addClass('fa-paper-plane');
+}).blur(function() {
+    $('.input-msg').removeClass('box-shadow');
+    $('.tasto-invio').find('i').removeClass('fa-paper-plane');
+    $('.tasto-invio').find('i').addClass('fa-microphone');
 });
 
+// invio messaggio inserito da utente
 $('.tasto-invio').click(function() {
-    messageSent(); // milestone 1.2
-    setTimeout(messageOk, 1000); // milestone 2.1
-    $('.tasto-invio').find('i').toggleClass('fa-microphone fa-paper-plane');
+    var messaggioInput = $('#messaggio-input').val();
+    $('#messaggio-input').val('');
+    appendMsg(messaggioInput, 'sent'); // milestone 1.2
+    scroll();
+    setTimeout(function() {
+        appendMsg('ok','received');
+        scroll();
+    }, 1000); // milestone 2.1
+});
+// invio messaggio inserito da utente con pressione invio
+$('.input-msg').keydown(function(event) {
+    switch (event.which) {
+        case 13:
+        var messaggioInput = $('#messaggio-input').val();
+        $('#messaggio-input').val('');
+        appendMsg(messaggioInput, 'sent'); // milestone 1.2
+        scroll();
+        setTimeout(function() {
+            appendMsg('ok','received');
+            scroll();
+        }, 1000); // milestone 2.1
+        $('.tasto-invio').find('i').toggleClass('fa-microphone fa-paper-plane');
+        $('.input-msg').removeClass('box-shadow');
+        break;
+    }
 });
 
+// ricerca contatto tramite barra ricerca (milestone 2.2)
 $('#find-contact').keyup(function(event) {
     var carattereFiltro = $(this).val().toLowerCase(); // assegno alla variabile il valore del carattere inserito dall'utente e lo rendo minuscolo
 
@@ -20,34 +51,16 @@ $('#find-contact').keyup(function(event) {
     });
 });
 
-$(document).keydown(function(event) {
-    switch (event.which) {
-        case 13:
-            messageSent();
-            setTimeout(messageOk, 1000);
-            $('.tasto-invio').find('i').toggleClass('fa-microphone fa-paper-plane');
-            break;
-    }
-});
 
-// funzione messaggio inviato dopo input utente
-function messageSent() {
-    var messaggioInput = $('#messaggio-input').val();
-    console.log(messaggioInput);
-    $('#messaggio-input').val('');
-    var messaggio = $('.template .chat-message').clone().addClass('sent');
-    messaggio.find('.testo-messaggio').text(messaggioInput);
+
+
+// funzione crea messaggio e aggiungi a chat
+function appendMsg(testoInput, sentReceived) {
+    var messaggio = $('.template .chat-message').clone().addClass(sentReceived);
+    messaggio.find('.testo-messaggio').text(testoInput);
     messaggio.children('.message-time').html(getTime());
     $('.main-room').append(messaggio);
-};
-
-// funzione messaggi di risposta 'ok'
-function messageOk() {
-    var messaggio = $('.template .chat-message').clone().addClass('received');
-    messaggio.find('.testo-messaggio').text('ok');
-    messaggio.children('.message-time').html(getTime());
-    $('.main-room').append(messaggio);
-};
+}
 
 // funzione per avere orario
 function getTime() {
@@ -55,3 +68,8 @@ function getTime() {
     var time = dt.getHours() + ":" + dt.getMinutes();
     return time;
 };
+
+function scroll() {
+    var pixelToScroll = $('.main-room').height();
+    $('.main-room').scrollTop(pixelToScroll);
+}
