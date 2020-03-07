@@ -35,6 +35,7 @@
 img {
     border-radius: 50%;
     height: 100%;
+    cursor: pointer;
 }
 
 i {
@@ -123,15 +124,16 @@ p {
     font-size: 30px;
     border-radius: 50%;
     color: #9de1fe;
+    cursor: default;
 }
 
 .notification-box .img-round {
     margin: 0 10px 0 15px;
 }
 
-.notification-box p {
+.notification-box a {
     color: rgb(96, 96, 96);
-    text-decoration: underline;
+    font-size: 14px;
 }
 /* stile search-chat */
 .search-chat {
@@ -232,6 +234,11 @@ p {
 
 .chat-room-container.chat-visible {
     display: block;
+}
+
+#my-account {
+    background-image: url('https://wallpapercave.com/wp/wp2794935.jpg');
+    background-size: cover;
 }
 /* stile header */
 .header-room {
