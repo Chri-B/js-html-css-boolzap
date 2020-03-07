@@ -65,6 +65,17 @@ $('.chat-preview').click(function() {
     }
 });
 
+// utilizzo del data per selezionare ogni chat container al click e mostrarlo
+$('.left .chat-list .chat-preview').click(function() { // al click della corrispondente chat-preview
+    var contatto = $(this).data('codiceContatto'); // associo alla variabile contatto il data-codice-contatto
+    console.log(contatto);
+    $('.right .chat-room-container').each(function() { // successivamente confronto i data-codice-contatto LEFT con quelli RIGHT
+        if (contatto == $(this).data('codiceContatto')) { // se corrispondono, mostro il data-codice-contatto selezionato al click iniziale
+            $('.right .chat-room-container').removeClass('chat-visible');
+            $(this).addClass('chat-visible');
+        }
+    });
+});
 
 
 
