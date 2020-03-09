@@ -195,7 +195,7 @@ p {
     display: block;
 }
 
-.overlay.overlay-visible {
+.overlay.active {
     display: block;
 }
 
@@ -232,7 +232,7 @@ p {
     display: none;
 }
 
-.chat-room-container.chat-visible {
+.chat-room-container.active {
     display: block;
 }
 

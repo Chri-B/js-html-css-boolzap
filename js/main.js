@@ -9,10 +9,10 @@ $('#messaggio-input').focus(function() {
     $('.tasto-invio').find('i').addClass('fa-microphone');
 });
 
-// invio messaggio inserito da utente
+// invio messaggio inserito da utente e risposta (dopo click icona invio)
 $('.tasto-invio').click(function() {
     var messaggioInput = $('#messaggio-input').val();
-    if(messaggioInput.trim().length >0) { // aggiunta controllo per evitare invio spazi vuoti
+    if(messaggioInput.trim().length > 0) { // aggiunta controllo per evitare invio spazi vuoti
         $('#messaggio-input').val('');
         appendMsg(messaggioInput, 'sent'); // milestone 1.2
         scroll();
@@ -23,7 +23,7 @@ $('.tasto-invio').click(function() {
     };
 });
 
-// invio messaggio inserito da utente con pressione invio
+// invio messaggio inserito da utente con pressione tastiera 'enter'
 $('.input-msg').keydown(function(event) {
     switch (event.which) {
         case 13:
@@ -40,7 +40,7 @@ $('.input-msg').keydown(function(event) {
             $('.input-msg').removeClass('box-shadow');
         }
         break;
-    }
+    };
 });
 
 // ricerca contatto tramite barra ricerca (milestone 2.2)
@@ -55,24 +55,26 @@ $('#find-contact').keyup(function(event) {
     });
 });
 
-// click su chat - overlay rimane evidenziato - hover gestito su CSS
+console.log($('.chat-preview h4').text());
+
+// click su chat-preview - overlay rimane evidenziato - hover gestito su CSS
 $('.chat-preview').click(function() {
-    if ($('.chat-preview').find('.overlay-visible').is(':visible')) {
-        $('.chat-preview').children('.overlay').removeClass('overlay-visible');
-        $(this).children('.overlay').addClass('overlay-visible');
+    if ($('.chat-preview').find('.active').is(':visible')) {
+        $('.chat-preview').children('.overlay').removeClass('active');
+        $(this).children('.overlay').addClass('active');
     } else {
-        $(this).children('.overlay').addClass('overlay-visible');
+        $(this).children('.overlay').addClass('active');
     }
 });
 
-// utilizzo del data per selezionare ogni chat container al click e mostrarlo
+// utilizzo del data per mostrare una chat selezionata con click
 $('.left .chat-list .chat-preview').click(function() { // al click della corrispondente chat-preview
     var contatto = $(this).data('codiceContatto'); // associo alla variabile contatto il data-codice-contatto
-    console.log(contatto);
+    // console.log(contatto);
     $('.right .chat-room-container').each(function() { // successivamente confronto i data-codice-contatto LEFT con quelli RIGHT
         if (contatto == $(this).data('codiceContatto')) { // se corrispondono, mostro il data-codice-contatto selezionato al click iniziale
-            $('.right .chat-room-container').removeClass('chat-visible');
-            $(this).addClass('chat-visible');
+            $('.right .chat-room-container').removeClass('active');
+            $(this).addClass('active');
         }
     });
 });
@@ -87,7 +89,7 @@ function appendMsg(testoInput, sentReceived) {
     $('.main-room').append(messaggio);
 }
 
-// funzione per avere orario
+// funzione ottenimento orario
 function getTime() {
     var dt = new Date();
     if (dt.getMinutes() < 10) {
@@ -99,15 +101,8 @@ function getTime() {
 };
 
 // funzione per scroll-down automatico
-// function scroll() { // dopo una certa qnt. di interazioni non scende più!
-//     var pixelScroll = $('.main-room').height();
-//     $('.main-room').scrollTop(pixelScroll);
-// };
-
-
-// FUNZIONE DA IMPLEMENTARE: FUNZIONA SOLO CON ID UNIVOCO! COME USARE SU OGNI CHAT???
-// funzione per scroll down automatico infinito
-function scroll() { // Funzione di autoscorrimento in basso
-    var scrollBot = document.getElementById('scrolled');
-    scrollBot.scrollTop = scrollBot.scrollHeight;
-}
+function scroll() {
+    var pixelScroll = $('.active .main-room').height(); // aggiunto '.active' per aumentare specificità classe richiamata
+    console.log('pixelHeight' + pixelScroll);
+    $('.active .main-room').scrollTop(pixelScroll);
+};
