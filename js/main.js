@@ -55,8 +55,6 @@ $('#find-contact').keyup(function(event) {
     });
 });
 
-console.log($('.chat-preview h4').text());
-
 // click su chat-preview - overlay rimane evidenziato - hover gestito su CSS
 $('.chat-preview').click(function() {
     if ($('.chat-preview').find('.active').is(':visible')) {
@@ -79,14 +77,30 @@ $('.left .chat-list .chat-preview').click(function() { // al click della corrisp
     });
 });
 
+// al click su chat appare box di selezione
+$(document).on('mouseenter', 'i.fas.fa-angle-down', function() {
+    if($('.edit-message').is(':visible')){
+        $('.edit-message').removeClass('active');
+        $(this).siblings('.edit-message').addClass('active');
+    } else {
+        $(this).siblings('.edit-message').addClass('active');
+    };
+});
+$(document).on('mouseleave', '.chat-message', function() {
+    $('.edit-message').removeClass('active');
+});
+
+$(document).on('click', '.edit-message.active .delete-msg', function() {
+    $(this).parents('.chat-message').hide();
+});
 
 
 // funzione crea messaggio e aggiungi a chat
 function appendMsg(testoInput, sentReceived) {
     var messaggio = $('.template .chat-message').clone().addClass(sentReceived);
     messaggio.find('.testo-messaggio').text(testoInput);
-    messaggio.children('.message-time').html(getTime());
-    $('.main-room').append(messaggio);
+    messaggio.children('.message-time span').html(getTime());
+    $('.active .main-room').append(messaggio);
 }
 
 // funzione ottenimento orario
