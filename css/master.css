@@ -115,7 +115,7 @@ p {
     padding: 0 20px 0 10px;
 }
 
-.fas.fa-comment-alt {
+.header-list .fas.fa-comment-alt {
     display: none;
 }
 
@@ -473,7 +473,7 @@ p {
     .fas.fa-times-circle {
         display: none;
     }
-    .fas.fa-comment-alt {
+    .header-list .fas.fa-comment-alt {
         display: block;
     }
 
