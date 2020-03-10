@@ -67,6 +67,7 @@ $('.chat-preview').click(function() {
 
 // utilizzo del data per mostrare una chat selezionata con click
 $('.left .chat-list .chat-preview').click(function() { // al click della corrispondente chat-preview
+    $('.footer-room').show();
     var contatto = $(this).data('codiceContatto'); // associo alla variabile contatto il data-codice-contatto
     // console.log(contatto);
     $('.right .chat-room-container').each(function() { // successivamente confronto i data-codice-contatto LEFT con quelli RIGHT
@@ -76,6 +77,18 @@ $('.left .chat-list .chat-preview').click(function() { // al click della corrisp
         }
     });
 });
+// creo pagina my-account
+$('.left .header-list .img-round img').click(function() {
+    $('.footer-room').hide();
+    var contatto = $(this).data('codiceContatto'); // associo alla variabile contatto il data-codice-contatto
+    // console.log(contatto);
+    $('.right .chat-room-container').each(function() { // successivamente confronto i data-codice-contatto LEFT con quelli RIGHT
+        if (contatto == $(this).data('codiceContatto')) { // se corrispondono, mostro il data-codice-contatto selezionato al click iniziale
+            $('.right .chat-room-container').removeClass('active');
+            $(this).addClass('active');
+        }
+    });
+})
 
 // al click su chat appare box di selezione
 $(document).on('mouseenter', 'i.fas.fa-angle-down', function() {

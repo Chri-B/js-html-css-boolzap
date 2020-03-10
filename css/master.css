@@ -238,8 +238,56 @@ p {
 }
 
 #my-account {
-    background-image: url('https://wallpapercave.com/wp/wp2794935.jpg');
-    background-size: cover;
+    height: 100%;
+}
+
+#my-account section {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.back-light-green {
+    background-color: #e1ffc7;
+}
+
+.back-white {
+    background-color: white;
+}
+
+#my-account section.credits {
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+#my-account section i {
+    padding-right: 20px;
+    color: #009688;
+}
+
+#my-account section h4:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+#my-account section p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: black;
+}
+
+#my-account section.credits a {
+    text-decoration: none;
+    color: black;
+}
+
+#my-account section.credits p {
+    padding-bottom: 10px;
+    cursor: auto;
+    text-decoration: none;
+    color: #b9b9b9;
 }
 /* stile header */
 .header-room {
@@ -268,12 +316,12 @@ p {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .chat-message {
     padding: 15px 20px 15px 15px;
     margin-bottom: 15px;
-    background: lightblue;
     max-width: 40%;
     border-radius: 10px;
     position: relative;
