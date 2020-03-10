@@ -1,12 +1,10 @@
 // cambio icona in base a click/focus
 $('#messaggio-input').focus(function() {
+    removeMicrophone();
     $('.input-msg').addClass('box-shadow');
-    $('.tasto-invio').find('i').removeClass('fa-microphone');
-    $('.tasto-invio').find('i').addClass('fa-paper-plane');
 }).blur(function() {
     $('.input-msg').removeClass('box-shadow');
-    $('.tasto-invio').find('i').removeClass('fa-paper-plane');
-    $('.tasto-invio').find('i').addClass('fa-microphone');
+    removePaperPlane();
 });
 
 // invio messaggio inserito da utente e risposta (dopo click icona invio)
@@ -77,7 +75,8 @@ $('.left .chat-list .chat-preview').click(function() { // al click della corrisp
         }
     });
 });
-// creo pagina my-account
+
+// al click icona profilo, viene visualizzata la pagina delle impostazioni account
 $('.left .header-list .img-round img').click(function() {
     $('.footer-room').hide();
     var contatto = $(this).data('codiceContatto'); // associo alla variabile contatto il data-codice-contatto
@@ -90,7 +89,7 @@ $('.left .header-list .img-round img').click(function() {
     });
 })
 
-// al click su chat appare box di selezione
+// al passaggio su chat icona appare box di selezione
 $(document).on('mouseenter', 'i.fas.fa-angle-down', function() {
     if($('.edit-message').is(':visible')){
         $('.edit-message').removeClass('active');
@@ -99,12 +98,20 @@ $(document).on('mouseenter', 'i.fas.fa-angle-down', function() {
         $(this).siblings('.edit-message').addClass('active');
     };
 });
+// quando il mouse lascia il messaggio il box edit messagge scompare
 $(document).on('mouseleave', '.chat-message', function() {
     $('.edit-message').removeClass('active');
 });
-
+// al click il messaggio selezionato viene rimosso
 $(document).on('click', '.edit-message.active .delete-msg', function() {
     $(this).parents('.chat-message').hide();
+});
+
+$('.fas.fa-bars').mouseenter(function() {
+    $('.left').show();
+});
+$('.fas.fa-times-circle').click(function() {
+    $('.left').hide();
 });
 
 
@@ -114,8 +121,17 @@ function appendMsg(testoInput, sentReceived) {
     messaggio.find('.testo-messaggio').text(testoInput);
     messaggio.children('.message-time span').html(getTime());
     $('.active .main-room').append(messaggio);
-}
-
+};
+// rimuove icona microfono e aggiunge icona PaperPlane
+function removeMicrophone() {
+    $('.tasto-invio').find('i').removeClass('fa-microphone');
+    $('.tasto-invio').find('i').addClass('fa-paper-plane');
+};
+// rimuove icona PaperPlane e aggiunge icona Microfono
+function removePaperPlane() {
+    $('.tasto-invio').find('i').removeClass('fa-paper-plane');
+    $('.tasto-invio').find('i').addClass('fa-microphone');
+};
 // funzione ottenimento orario
 function getTime() {
     var dt = new Date();
@@ -129,7 +145,7 @@ function getTime() {
 
 // funzione per scroll-down automatico
 function scroll() {
-    var pixelScroll = $('.active .main-room').height(); // aggiunto '.active' per aumentare specificità classe richiamata
+    var pixelScroll = $('.active .main-room').prop('scrollHeight'); // .prop('scrollHeight permette scroll infinito - a differenza di .height() -')
     console.log('pixelHeight' + pixelScroll);
-    $('.active .main-room').scrollTop(pixelScroll);
+    $('.active .main-room').scrollTop(pixelScroll); // aggiunto '.active' per aumentare specificità classe richiamata
 };

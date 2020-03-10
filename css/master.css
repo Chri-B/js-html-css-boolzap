@@ -38,6 +38,14 @@ img {
     cursor: pointer;
 }
 
+
+.img-round {
+    height: 100%;
+    float: left;
+    display: flex;
+    align-items: center;
+}
+
 i {
     font-size: 22px;
     color: #9e9e9a;
@@ -78,23 +86,25 @@ p {
 }
 
 .header-room {
+    padding-top: 5px;
     border-bottom: 1px solid #e0e0e0;
 }
 
 /* box sinistro */
+.header-list .img-round img,
+.right .img-round img {
+    padding: 10px 5px;
+}
+
 .left {
+    position: absolute;
+    z-index: 99;
+    display: none;
     background-color: #ffffff;
     width: 40%;
     height: 100%;
     float: left;
     border-right: 1px solid #e0e0e0;
-}
-
-.img-round {
-    height: 100%;
-    float: left;
-    display: flex;
-    align-items: center;
 }
 
 /* stile header-list */
@@ -105,9 +115,12 @@ p {
     padding: 0 20px 0 10px;
 }
 
-.header-list .img-round img,
-.right .img-round img {
-    padding: 10px 5px;
+.fas.fa-comment-alt {
+    display: none;
+}
+
+.header-list .icons {
+    display: flex;
 }
 
 /* stile notification-box */
@@ -161,7 +174,6 @@ p {
     border: none;
     font-size: 15px;
     position: absolute;
-    width: 80%;
     top: 50%;
     left: 50px;
     transform: translateY(-50%);
@@ -219,7 +231,7 @@ p {
 
 /* box destro */
 .right {
-    width: 60%;
+    width: 100%;
     height: 100%;
     float: left;
 }
@@ -299,10 +311,19 @@ p {
 
 .header-room .chat-text {
     height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .header-room .header-left {
     height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header-room i.fas.fa-bars{
+    padding: 0 20px 0 0;
 }
 
 .header-room p {
@@ -394,7 +415,7 @@ p {
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 60%;
+    width: 100%;
     display: flex;
     align-items: center;
 }
@@ -441,5 +462,37 @@ p {
     display: none;
 }
 
+/* media screen sopra i 768px */
+@media screen and (min-width: 768px) {
 
+    .left {
+        position: relative;
+        display: block;
+    }
+
+    .fas.fa-times-circle {
+        display: none;
+    }
+    .fas.fa-comment-alt {
+        display: block;
+    }
+
+    .click-to-chat {
+        display: none;
+    }
+
+    .right {
+        width: 60%;
+    }
+
+    .footer-room {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 825px) {
+    .header-right i {
+        padding-left: 5px;
+    }
+}
 /*  */
