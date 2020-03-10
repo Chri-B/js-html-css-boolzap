@@ -106,10 +106,11 @@ $(document).on('mouseleave', '.chat-message', function() {
 $(document).on('click', '.edit-message.active .delete-msg', function() {
     $(this).parents('.chat-message').hide();
 });
-
+// al passaggio sull'icona viene mostrata la schermata .left con le chat-preview
 $('.fas.fa-bars').mouseenter(function() {
     $('.left').show();
 });
+// click sulla icona x per chiudere la schermata .left con le chat-preview
 $('.fas.fa-times-circle').click(function() {
     $('.left').hide();
 });
