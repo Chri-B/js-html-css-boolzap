@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"/>
         <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.3/handlebars.min.js" charset="utf-8"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <link rel="stylesheet" href="css/master.css">
     </head>
@@ -885,19 +886,23 @@
             </div>
         </div>
 
-        <div class="template">
-            <div class="chat-message">
-                <p class="testo-messaggio">tu?</p>
+
+
+        <script id="messaggio-template" type="text/x-handlebars-template">
+
+            <div class="chat-message {{direzione}}">
+                <p class="testo-messaggio">{{testoMessaggio}}</p>
                 <i class="fas fa-angle-down"></i>
                 <div class="message-time">
-                    <span>1.23</span>
+                    <span>{{orario}}</span>
                 </div>
                 <div class="edit-message">
                     <p>Message info</p>
                     <p class="delete-msg">Delete message</p>
                 </div>
             </div>
-        </div>
+
+        </script>
 
 
         <script src="js/main.js" charset="utf-8"></script>

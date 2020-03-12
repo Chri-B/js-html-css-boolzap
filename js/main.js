@@ -104,7 +104,7 @@ $(document).on('mouseleave', '.chat-message', function() {
 });
 // al click il messaggio selezionato viene rimosso
 $(document).on('click', '.edit-message.active .delete-msg', function() {
-    $(this).parents('.chat-message').hide();
+    $(this).parents('.chat-message').remove();
 });
 // al passaggio sull'icona viene mostrata la schermata .left con le chat-preview
 $('.fas.fa-bars').mouseenter(function() {
@@ -116,12 +116,26 @@ $('.fas.fa-times-circle').click(function() {
 });
 
 
-// funzione crea messaggio e aggiungi a chat
+
+// // funzione crea messaggio e aggiungi a chat
+// function appendMsg(testoInput, sentReceived) {
+//     var messaggio = $('.template .chat-message').clone().addClass(sentReceived);
+//     messaggio.find('.testo-messaggio').text(testoInput);
+//     messaggio.children('.message-time span').html(getTime());
+//     $('.active .main-room').append(messaggio);
+// };
+// funzione crea messaggio e aggiungi a chat attiva ma con uso di handlebars
+var source = $("#messaggio-template").html();                         // Clono il template
+var template = Handlebars.compile(source);                            // Do in pasto ad handlebars il codice clonato così da farglielo compilare con dei PLACEHOLDERS laddove ho messo delle variabili tra le parentesi graffe
+
 function appendMsg(testoInput, sentReceived) {
-    var messaggio = $('.template .chat-message').clone().addClass(sentReceived);
-    messaggio.find('.testo-messaggio').text(testoInput);
-    messaggio.children('.message-time span').html(getTime());
-    $('.active .main-room').append(messaggio);
+    var datiMessaggio = {                                             // assemblo in un oggetto il contenuto del messaggio
+        testoMessaggio: testoInput,
+        direzione: sentReceived,
+        orario: getTime()
+    };
+    var templateMessaggio = template(datiMessaggio);                  // popolo il template di handlebars con il contenuto del messaggio
+    $('.active .main-room').append(templateMessaggio);                // faccio l'append del template così popolato
 };
 // rimuove icona microfono e aggiunge icona PaperPlane
 function removeMicrophone() {
@@ -143,10 +157,19 @@ function getTime() {
     };
     return time;
 };
-
 // funzione per scroll-down automatico
 function scroll() {
     var pixelScroll = $('.active .main-room').prop('scrollHeight'); // .prop('scrollHeight permette scroll infinito - a differenza di .height() -')
-    console.log('pixelHeight' + pixelScroll);
+    // console.log('pixelHeight' + pixelScroll);
     $('.active .main-room').scrollTop(pixelScroll); // aggiunto '.active' per aumentare specificità classe richiamata
 };
+
+
+
+
+
+
+
+
+
+//
