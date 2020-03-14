@@ -1,3 +1,114 @@
+// creo l'oggetto messaggiArchiviati
+var source = $("#messaggio-template").html();                         // Clono il template
+var template = Handlebars.compile(source);                            // Do in pasto ad handlebars il codice clonato così da farglielo compilare con dei PLACEHOLDERS laddove ho messo delle variabili tra le parentesi graffe
+
+var messaggiArchiviati = {
+    c0: [
+        {
+            testoMessaggio: 'Hai più sentito Sofia?',
+            direzione: 'sent'
+        },
+        {
+            testoMessaggio: 'No, non l\'ho più vista',
+            direzione: 'received'
+        }
+    ],
+    c1: [
+        {
+            testoMessaggio: 'Ciao, come stai?',
+            direzione: 'sent'
+        },
+        {
+            testoMessaggio: 'bene tu?',
+            direzione: 'received'
+        }
+    ],
+    c2: [
+        {
+            testoMessaggio: 'Ciao come stai??',
+            direzione: 'sent'
+        },
+        {
+            testoMessaggio: 'tutto bene!',
+            direzione: 'received'
+        }
+    ],
+    c3: [
+        {
+            testoMessaggio: 'Ciao alla fine sei andato?',
+            direzione: 'sent'
+        },
+        {
+            testoMessaggio: 'Non poteva essere altrimenti',
+            direzione: 'received'
+        }
+    ],
+    c4: [
+        {
+            testoMessaggio: 'Ciao Luca, passi tu oggi?',
+            direzione: 'sent'
+        },
+        {
+            testoMessaggio: 'ciao no non riesco chiedi a paolo',
+            direzione: 'received'
+        }
+    ],
+    c5: [
+        {
+            testoMessaggio: 'Ciao Paolo, riesci a passare che luca non può?',
+            direzione: 'sent'
+        },
+        {
+            testoMessaggio: 'certo non c\'è problema',
+            direzione: 'received'
+        }
+    ],
+    c6: [
+        {
+            testoMessaggio: 'Ciao oggi ci sei?',
+            direzione: 'sent'
+        },
+        {
+            testoMessaggio: 'ciao No vado da Paolo',
+            direzione: 'received'
+        }
+    ],
+    c7: [
+        {
+            testoMessaggio: 'Ciao vai da mattia?',
+            direzione: 'sent'
+        },
+        {
+            testoMessaggio: 'esatto',
+            direzione: 'received'
+        }
+    ],
+    c8: [
+        {
+            testoMessaggio: 'Ciao, spero tu non esca oggi.',
+            direzione: 'sent'
+        },
+        {
+            testoMessaggio: 'no oggi no',
+            direzione: 'received'
+        }
+    ]
+};
+
+// raggiungo tramite ciclo for-in ogni chiave dell'oggetto
+for (var chat in messaggiArchiviati) {
+    var numeroChat = chat.substr(1); // ricavo il numero di ogni conversazione eliminando il primo carattere 'c'
+    for (var i = 0; i < messaggiArchiviati[chat].length; i++) { // tramite ciclo for raggiungo ogni elemento dell'array all'interno dell'oggetto
+        // console.log(messaggiArchiviati[chat][i]);
+        var oggettoMessaggio = messaggiArchiviati[chat][i];
+        var testoMessaggio = oggettoMessaggio.testoMessaggio;
+        var direzione = oggettoMessaggio.direzione;
+
+        var selettoreChat = $('.chat-room-container[data-codice-contatto="' + numeroChat + '"]').children('.main-room');
+        appendMsg(testoMessaggio, direzione, selettoreChat); // alla funzione appendMsg do come variabili in ingresso le variabili create sopra
+    }
+}
+
 // cambio icona in base a click/focus
 $('#messaggio-input').focus(function() {
     removeMicrophone();
@@ -9,34 +120,14 @@ $('#messaggio-input').focus(function() {
 
 // invio messaggio inserito da utente e risposta (dopo click icona invio)
 $('.tasto-invio').click(function() {
-    var messaggioInput = $('#messaggio-input').val();
-    if(messaggioInput.trim().length > 0) { // aggiunta controllo per evitare invio spazi vuoti
-        $('#messaggio-input').val('');
-        appendMsg(messaggioInput, 'sent'); // milestone 1.2
-        scroll();
-        setTimeout(function() {
-            appendMsg('ok','received');
-            scroll();
-        }, 1000); // milestone 2.1
-    };
+    invioMsg();
 });
 
 // invio messaggio inserito da utente con pressione tastiera 'enter'
 $('.input-msg').keydown(function(event) {
     switch (event.which) {
         case 13:
-        var messaggioInput = $('#messaggio-input').val();
-        if (messaggioInput.trim().length > 0) { // aggiunta controllo per evitare invio spazi vuoti
-            $('#messaggio-input').val('');
-            appendMsg(messaggioInput, 'sent'); // milestone 1.2
-            scroll();
-            setTimeout(function() {
-                appendMsg('ok','received');
-                scroll();
-            }, 1000); // milestone 2.1
-            $('.tasto-invio').find('i').toggleClass('fa-microphone fa-paper-plane');
-            $('.input-msg').removeClass('box-shadow');
-        }
+        invioMsg();
         break;
     };
 });
@@ -125,17 +216,28 @@ $('.fas.fa-times-circle').click(function() {
 //     $('.active .main-room').append(messaggio);
 // };
 // funzione crea messaggio e aggiungi a chat attiva ma con uso di handlebars
-var source = $("#messaggio-template").html();                         // Clono il template
-var template = Handlebars.compile(source);                            // Do in pasto ad handlebars il codice clonato così da farglielo compilare con dei PLACEHOLDERS laddove ho messo delle variabili tra le parentesi graffe
-
-function appendMsg(testoInput, sentReceived) {
+function appendMsg(testoInput, sentReceived, selettoreChat) {
     var datiMessaggio = {                                             // assemblo in un oggetto il contenuto del messaggio
         testoMessaggio: testoInput,
         direzione: sentReceived,
         orario: getTime()
     };
     var templateMessaggio = template(datiMessaggio);                  // popolo il template di handlebars con il contenuto del messaggio
-    $('.active .main-room').append(templateMessaggio);                // faccio l'append del template così popolato
+    // $('.active .main-room').append(templateMessaggio);                // faccio l'append del template così popolato
+    $(selettoreChat).append(templateMessaggio);                // faccio l'append del template così popolato
+};
+// funzione di invio messaggio
+function invioMsg() {
+    var messaggioInput = $('#messaggio-input').val();
+    if(messaggioInput.trim().length > 0) { // aggiunta controllo per evitare invio spazi vuoti
+        $('#messaggio-input').val('');
+        appendMsg(messaggioInput, 'sent', '.active .main-room'); // milestone 1.2
+        scroll();
+        setTimeout(function() {
+            appendMsg('ok','received', '.active .main-room');
+            scroll();
+        }, 1000); // milestone 2.1
+    };
 };
 // rimuove icona microfono e aggiunge icona PaperPlane
 function removeMicrophone() {
