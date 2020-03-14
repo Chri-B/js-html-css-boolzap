@@ -1,7 +1,11 @@
-// creo l'oggetto messaggiArchiviati
+// procedura per Handlebars: template per messaggio
 var source = $("#messaggio-template").html();                         // Clono il template
 var template = Handlebars.compile(source);                            // Do in pasto ad handlebars il codice clonato così da farglielo compilare con dei PLACEHOLDERS laddove ho messo delle variabili tra le parentesi graffe
 
+// procedura per Handlebars: template per preview chat
+var source2 = $('#preview-template').html();
+var template2 = Handlebars.compile(source2);
+// creo l'oggetto messaggiArchiviati
 var messaggiArchiviati = {
     c0: [
         {
@@ -95,7 +99,46 @@ var messaggiArchiviati = {
     ]
 };
 
-// raggiungo tramite ciclo for-in ogni chiave dell'oggetto
+var contatti = {
+    c0: {
+        nomeContatto: 'Sara',
+        ultimoAccesso: '15,56'
+    },
+    c1: {
+        nomeContatto: 'Fabio',
+        ultimoAccesso: '16,45'
+    },
+    c2: {
+        nomeContatto: 'Sofia',
+        ultimoAccesso: '01,34'
+    },
+    c3: {
+        nomeContatto: 'Marco',
+        ultimoAccesso: '13,13'
+    },
+    c4: {
+        nomeContatto: 'Luca',
+        ultimoAccesso: '12,12'
+    },
+    c5: {
+        nomeContatto: 'Paolo',
+        ultimoAccesso: '11,11'
+    },
+    c6: {
+        nomeContatto: 'Mattia',
+        ultimoAccesso: '22,22'
+    },
+    c7: {
+        nomeContatto: 'Giulio',
+        ultimoAccesso: '09,22'
+    },
+    c8: {
+        nomeContatto: 'Andrea',
+        ultimoAccesso: '10,04'
+    }
+};
+
+// raggiungo tramite ciclo for-in ogni chiave dell'oggetto messaggiArchiviati
 for (var chat in messaggiArchiviati) {
     var numeroChat = chat.substr(1); // ricavo il numero di ogni conversazione eliminando il primo carattere 'c'
     for (var i = 0; i < messaggiArchiviati[chat].length; i++) { // tramite ciclo for raggiungo ogni elemento dell'array all'interno dell'oggetto
@@ -105,9 +148,26 @@ for (var chat in messaggiArchiviati) {
         var direzione = oggettoMessaggio.direzione;
 
         var selettoreChat = $('.chat-room-container[data-codice-contatto="' + numeroChat + '"]').children('.main-room');
+        // console.log(selettoreChat, 'selettoreChat');
         appendMsg(testoMessaggio, direzione, selettoreChat); // alla funzione appendMsg do come variabili in ingresso le variabili create sopra
     }
-}
+};
+
+// utilizzo handlebars per riempire i miei contatti
+for (var contatto in contatti) {
+    var numeroPreview = contatto.substr(1); // ricavo il numero di ogni conversazione eliminando il primo carattere 'c'
+    // console.log(contatti[contatto]);
+    var nomeContatto = contatti[contatto].nomeContatto;
+    // console.log(nomeContatto);
+    var ultimoAccesso = contatti[contatto].ultimoAccesso;
+    // console.log(ultimoAccesso);
+
+    var selettorePreview = $('.chat-preview[data-codice-contatto ="' + numeroPreview + '"]').find('.chat-text');
+    // console.log(selettorePreview, 'selettore preview');
+    appendContatto(nomeContatto, ultimoAccesso, selettorePreview);
+};
+
+
 
 // cambio icona in base a click/focus
 $('#messaggio-input').focus(function() {
@@ -226,6 +286,15 @@ function appendMsg(testoInput, sentReceived, selettoreChat) {
     // $('.active .main-room').append(templateMessaggio);                // faccio l'append del template così popolato
     $(selettoreChat).append(templateMessaggio);                // faccio l'append del template così popolato
 };
+function appendContatto(nomeContatto, orario, selettorePreview) {
+    var datiContatto = {                                             // assemblo in un oggetto il contenuto del messaggio
+        nomeContatto: nomeContatto,
+        ultimoAccesso: ultimoAccesso
+    };
+    var templateContatto = template2(datiContatto);                  // popolo il template di handlebars con il contenuto del messaggio
+    // $('.active .main-room').append(templateMessaggio);                // faccio l'append del template così popolato
+    $(selettorePreview).append(templateContatto);                // faccio l'append del template così popolato
+};
 // funzione di invio messaggio
 function invioMsg() {
     var messaggioInput = $('#messaggio-input').val();
@@ -265,13 +334,3 @@ function scroll() {
     // console.log('pixelHeight' + pixelScroll);
     $('.active .main-room').scrollTop(pixelScroll); // aggiunto '.active' per aumentare specificità classe richiamata
 };
-
-
-
-
-
-
-
-
-
-//
