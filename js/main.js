@@ -102,39 +102,39 @@ var messaggiArchiviati = {
 var contatti = {
     c0: {
         nomeContatto: 'Sara',
-        ultimoAccesso: '15,56'
+        ultimoAccesso: '15:56'
     },
     c1: {
         nomeContatto: 'Fabio',
-        ultimoAccesso: '16,45'
+        ultimoAccesso: '16:45'
     },
     c2: {
         nomeContatto: 'Sofia',
-        ultimoAccesso: '01,34'
+        ultimoAccesso: '01:34'
     },
     c3: {
         nomeContatto: 'Marco',
-        ultimoAccesso: '13,13'
+        ultimoAccesso: '13:13'
     },
     c4: {
         nomeContatto: 'Luca',
-        ultimoAccesso: '12,12'
+        ultimoAccesso: '12:12'
     },
     c5: {
         nomeContatto: 'Paolo',
-        ultimoAccesso: '11,11'
+        ultimoAccesso: '11:11'
     },
     c6: {
         nomeContatto: 'Mattia',
-        ultimoAccesso: '22,22'
+        ultimoAccesso: '22:22'
     },
     c7: {
         nomeContatto: 'Giulio',
-        ultimoAccesso: '09,22'
+        ultimoAccesso: '09:22'
     },
     c8: {
         nomeContatto: 'Andrea',
-        ultimoAccesso: '10,04'
+        ultimoAccesso: '10:04'
     }
 };
 
@@ -166,7 +166,6 @@ for (var contatto in contatti) {
     // console.log(selettorePreview, 'selettore preview');
     appendContatto(nomeContatto, ultimoAccesso, selettorePreview);
 };
-
 
 
 // cambio icona in base a click/focus
@@ -305,7 +304,7 @@ function invioMsg() {
         setTimeout(function() {
             appendMsg('ok','received', '.active .main-room');
             scroll();
-        }, 1000); // milestone 2.1
+        }, 1000); // milestone 2.
     };
 };
 // rimuove icona microfono e aggiunge icona PaperPlane
